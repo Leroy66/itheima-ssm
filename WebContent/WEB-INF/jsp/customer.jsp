@@ -212,7 +212,7 @@
 				<div class="panel-body">
 					<form class="form-inline"
 						action="${pageContext.request.contextPath }/customer/list.action"
-						method="get">
+						method="post">
 						<div class="form-group">
 							<label for="customerName">客户名称</label> <input type="text"
 								class="form-control" id="customerName" value="${custName }"

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.ssm.mapper.CustomerDao">
+	
+	<select id="countCustomerListByCondition" 
+		parameterType="com.itheima.ssm.pojo.CustomerListRequestParam" 
+		resultType="Integer">
+		SELECT
+		count(1)
+		FROM customer
+		<where>
+			<if test="null != custName and custName !='' ">
+				cust_name like "%"#{custName}"%"
+			</if>
+			<if test="null != custSource and custSource !='' ">
+				and cust_source = #{custSource}
+			</if>
+			<if test="null != custIndustry and custIndustry !='' ">
+				and cust_industry = #{custIndustry}
+			</if>
+			<if test="null != custLevel and custLevel !='' ">
+				and cust_level = #{custLevel}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectCustomerListByCondition"
+		parameterType="com.itheima.ssm.pojo.CustomerListRequestParam" 
+		resultType="com.itheima.ssm.pojo.CustomerPojo">
+		SELECT
+		*
+		FROM customer
+		<where>
+			<if test="null != custName and custName !='' ">
+				cust_name like "%"#{custName}"%"
+			</if>
+			<if test="null != custSource and custSource !='' ">
+				and cust_source = #{custSource}
+			</if>
+			<if test="null != custIndustry and custIndustry !='' ">
+				and cust_industry = #{custIndustry}
+			</if>
+			<if test="null != custLevel and custLevel !='' ">
+				and cust_level = #{custLevel}
+			</if>
+		</where>
+		limit #{startIndex},#{pageSize}
+	</select>
+</mapper>

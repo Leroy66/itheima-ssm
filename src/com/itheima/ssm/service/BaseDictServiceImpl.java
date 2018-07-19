@@ -10,7 +10,6 @@ import com.itheima.ssm.mapper.BaseDictDao;
 import com.itheima.ssm.pojo.BaseDictPojo;
 
 @Service
-// @Transactional
 public class BaseDictServiceImpl implements BaseDictService {
 
 	@Resource
