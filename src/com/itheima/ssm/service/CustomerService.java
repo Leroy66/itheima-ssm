@@ -29,4 +29,10 @@ public interface CustomerService {
 	 */
 	public void updateCustomerById(CustomerPojo customer);
 
+	/**
+	 * 删除客户
+	 * @param customer
+	 */
+	public void deleteCustomerById(Integer id);
+
 }

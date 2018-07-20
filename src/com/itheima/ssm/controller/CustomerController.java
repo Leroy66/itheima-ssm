@@ -71,5 +71,12 @@ public class CustomerController {
 		customerService.updateCustomerById(customer);
 		return "OK"; // 只有返回ok,前端才会弹窗显示修改成功
 	}
+	
+	//删除客户
+	@RequestMapping(value = "customer/delete.action")
+	public @ResponseBody String deleteCustomer(Integer id) {
+		customerService.deleteCustomerById(id);
+		return "OK"; // 只有返回ok,前端才会弹窗显示修改成功
+	}
 
 }

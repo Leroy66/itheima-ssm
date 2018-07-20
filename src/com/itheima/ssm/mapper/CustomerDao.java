@@ -16,4 +16,6 @@ public interface CustomerDao {
 
 	public void updateCustomerById(CustomerPojo customer);
 
+	public void deleteCustomerById(Integer id);
+
 }
