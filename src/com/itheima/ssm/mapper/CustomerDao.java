@@ -12,4 +12,8 @@ public interface CustomerDao {
 
 	public List<CustomerPojo> selectCustomerListByCondition(CustomerListRequestParam param);
 
+	public CustomerPojo selectCustomerById(Integer id);
+
+	public void updateCustomerById(CustomerPojo customer);
+
 }

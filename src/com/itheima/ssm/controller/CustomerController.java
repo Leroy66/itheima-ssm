@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itheima.common.utils.Page;
 import com.itheima.ssm.pojo.BaseDictPojo;
@@ -36,8 +37,8 @@ public class CustomerController {
 
 	@RequestMapping(value = "/customer/list")
 	public String list(CustomerListRequestParam requestParam, Model model) {
-		//处理初始值
-		requestParam.setStartIndex((requestParam.getPageNum()-1)*requestParam.getPageSize());
+		// 处理初始值
+		requestParam.setStartIndex((requestParam.getPageNum() - 1) * requestParam.getPageSize());
 
 		// 头部的筛选条件
 		List<BaseDictPojo> fromType = baseDictService.selectBaseDictListByCode(BASE_DICT_RFOM_TYPR);
@@ -56,6 +57,19 @@ public class CustomerController {
 		model.addAttribute("custIndustry", requestParam.getCustIndustry());
 		model.addAttribute("custLevel", requestParam.getCustLevel());
 		return "customer";
+	}
+
+	// 查找客户详细信息
+	@RequestMapping(value = "customer/edit.action")
+	public @ResponseBody CustomerPojo editCustomer(Integer id) {
+		return customerService.selectCustomerById(id);
+	}
+
+	// 确认需改客户信息
+	@RequestMapping(value = "customer/update.action")
+	public @ResponseBody String updateCustomer(CustomerPojo customer) {
+		customerService.updateCustomerById(customer);
+		return "OK"; // 只有返回ok,前端才会弹窗显示修改成功
 	}
 
 }

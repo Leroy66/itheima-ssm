@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.itheima.common.utils.Page;
 import com.itheima.ssm.mapper.CustomerDao;
-import com.itheima.ssm.pojo.BaseDictPojo;
 import com.itheima.ssm.pojo.CustomerListRequestParam;
 import com.itheima.ssm.pojo.CustomerPojo;
 
@@ -29,6 +28,16 @@ public class CustomerServiceImpl implements CustomerService {
 		result.setTotal(total);
 		result.setRows(rows);
 		return result;
+	}
+
+	@Override
+	public CustomerPojo selectCustomerById(Integer id) {
+		return customerDao.selectCustomerById(id);
+	}
+
+	@Override
+	public void updateCustomerById(CustomerPojo customer) {
+		 customerDao.updateCustomerById(customer);
 	}
 
 }
